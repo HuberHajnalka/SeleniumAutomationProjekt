@@ -9,16 +9,14 @@ import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 
+import PageObjects.GmailLoginPage;
 import testlink.api.java.client.TestLinkAPIException;
 import testlink.api.java.client.TestLinkAPIResults;
 
 
 public class LoginScenarios {
-
-	public static WebDriver driver;
-	public static String url="http://automationpractice.com/index.php";
 	
-	@Before
+	/*@Before
 	public void openBrowser() throws MalformedURLException{
 		System.setProperty("webdriver.chrome.driver", "drivers/chromedrivers/2_32/chromedriver.exe");
 		driver= new ChromeDriver();
@@ -26,22 +24,24 @@ public class LoginScenarios {
 		driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
 		//driver.manage().window().maximize();
 		
-	}
+	}*/
 	
 	@Test
 	public void validLogin() throws Exception {
+		GmailLoginPage gmailLogin=new GmailLoginPage();
 		try {
-			driver.get(url);
-			driver.findElement(By.id("contact-linkkk"));
-			TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
+			gmailLogin.login("huber.hajnalka90", "Musztang01");
+			//driver.get(url);
+			//driver.findElement(By.id("contact-linkkk"));
+		//	TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-			TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+		TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 		}
 	}
 	
 	@After
 	public void closeBrowser() {
-		driver.quit();
+		GmailLoginPage.driver.quit();
 	}
 	
 }

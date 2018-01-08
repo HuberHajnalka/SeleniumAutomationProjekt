@@ -20,5 +20,7 @@
 	<classpathentry kind="lib" path="D:/ELTE/programs/jars/junit-4.12.jar"/>
 	<classpathentry kind="lib" path="D:/ELTE/programs/jars/JUnitParams-1.0.4.jar"/>
 	<classpathentry kind="lib" path="D:/ELTE/programs/jars/selenium-server-standalone-3.6.0.jar"/>
+	<classpathentry kind="lib" path="D:/ELTE/programs/jars/guava-19.0.jar"/>
+	<classpathentry kind="lib" path="D:/ELTE/programs/jars/selenium-java-2.53.0.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
