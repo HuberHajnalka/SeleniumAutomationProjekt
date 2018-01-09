@@ -1,47 +1,66 @@
 package TestLink;
 
-import java.net.MalformedURLException;
-import java.util.concurrent.TimeUnit;
+
+import java.io.Console;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Assert;
 import org.junit.Test;
-import org.openqa.selenium.*;
-import org.openqa.selenium.chrome.ChromeDriver;
 
+import Base.GmailBase;
+import Base.TestFunctions;
 import PageObjects.GmailLoginPage;
-import testlink.api.java.client.TestLinkAPIException;
+import PageObjects.GmailPage;
 import testlink.api.java.client.TestLinkAPIResults;
 
 
 public class LoginScenarios {
+	GmailLoginPage gmailLogin;
 	
-	/*@Before
-	public void openBrowser() throws MalformedURLException{
-		System.setProperty("webdriver.chrome.driver", "drivers/chromedrivers/2_32/chromedriver.exe");
-		driver= new ChromeDriver();
-		driver.manage().deleteAllCookies();
-		driver.manage().timeouts().implicitlyWait(5,TimeUnit.SECONDS);
-		//driver.manage().window().maximize();
-		
-	}*/
-	
+	@Before
+	public void initializeLoginPage() throws Exception{
+		gmailLogin=new GmailLoginPage();
+	}
+
 	@Test
 	public void validLogin() throws Exception {
-		GmailLoginPage gmailLogin=new GmailLoginPage();
 		try {
-			gmailLogin.login("huber.hajnalka90", "Musztang01");
-			//driver.get(url);
-			//driver.findElement(By.id("contact-linkkk"));
-		//	TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
+			GmailPage gmail=gmailLogin.login("SeleniumTestAutomation2018", "Selenium2018");
+			gmail.checkPageIdLoaded();
+			System.out.println("ValidLogin Test was successfully finished");
+			TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-		TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 		}
 	}
 	
+	@Test
+	public void invalidUserName() throws Exception {
+		try {
+			gmailLogin.invalidUserLogin("SeleniumTestAutomation2019");
+			System.out.println("Invalid User Login Test was successfully finished");
+			//TestLinkIntegration.updateResults("InvalidUserLogin", null, TestLinkAPIResults.TEST_PASSED);
+		}catch(Exception e) {
+			//TestLinkIntegration.updateResults("InvalidUserLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+		}
+	}
+	
+	@Test
+	public void invalidPassword() throws Exception {
+		try {
+			gmailLogin.invalidPasswordLogin("SeleniumTestAutomation2018", "Selenium2019");
+			System.out.println("Invalid Password Login Test was successfully finished");
+			//TestLinkIntegration.updateResults("InvalidPasswordLogin", null, TestLinkAPIResults.TEST_PASSED);
+		}catch(Exception e) {
+			//TestLinkIntegration.updateResults("InvalidPasswordLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+		}
+	}
+	
+	
 	@After
 	public void closeBrowser() {
-		GmailLoginPage.driver.quit();
+		GmailLoginPage.driver.close();
 	}
 	
 }
