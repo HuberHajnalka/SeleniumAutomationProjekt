@@ -15,7 +15,7 @@ import PageObjects.GmailPage;
 import testlink.api.java.client.TestLinkAPIResults;
 
 
-public class LoginScenarios {
+public class LoginScenario {
 	GmailLoginPage gmailLogin;
 	
 	@Before
@@ -29,9 +29,9 @@ public class LoginScenarios {
 			GmailPage gmail=gmailLogin.login("SeleniumTestAutomation2018", "Selenium2018");
 			gmail.checkPageIdLoaded();
 			System.out.println("ValidLogin Test was successfully finished");
-			TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
+			//TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-			TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			//TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 		}
 	}
 	
