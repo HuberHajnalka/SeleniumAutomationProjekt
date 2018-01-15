@@ -1,6 +1,7 @@
 package TestLink;
 
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
@@ -24,28 +25,29 @@ public class IncomingMailScenario {
 	}
 
 	@Test
-	public void IncominMailPageVerification() throws Exception {
+	public void IncomingMailPageVerification() throws Exception {
 		try {
 			incomingMail=gmail.submitIncomingMails();
 			System.out.println("IncominMailPageVerification Test was successfully finished");
-		//	TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("IncomingMailPageVerification", "IncominMailPageVerification Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-		//	TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("IncomingMailPageVerification", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			Assert.fail(e.getMessage());
 		}
 	}
 	
 	@Test
-	public void IncominMailPageIconsCheck() throws Exception {
+	public void IncomingMailPageIconsCheck() throws Exception {
 		try {
 			incomingMail=gmail.submitIncomingMails();
-			incomingMail.primaryIconCheck("Primary"); //id-s changes dinamically
+			incomingMail.primaryIconCheck("Primary"); 
 			incomingMail.socialIconCheck("Social");
 			incomingMail.promotionsIconCheck("Promotions");
-			System.out.println("IncominMailPageIconchekc Test was successfully finished");
-			
-		//	TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
+			System.out.println("IncominMailPageIconcheck Test was successfully finished");	
+			TestLinkIntegration.updateResults("IncomingMailPageIconsCheck", "IncominMailPageIconcheck Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-		//	TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("IncomingMailPageIconsCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			Assert.fail(e.getMessage());
 		}
 	}
 	
@@ -53,12 +55,12 @@ public class IncomingMailScenario {
 	public void SearchForSubjectCheck() throws Exception {
 		try {
 			incomingMail=gmail.submitIncomingMails();
-			incomingMail.search("gmail", "Subject"); //label 'subject is needed in path
-			incomingMail.checkResult(2);
+			incomingMail.search("gmail", "Subject", "1–2 of 2"); 
 			System.out.println("Email(s) were found");
-		//	TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("SearchForSubjectCheck", "Email(s) were found", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-		//	TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("SearchForSubjectCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			Assert.fail(e.getMessage());
 		}
 	}
 	
@@ -66,12 +68,12 @@ public class IncomingMailScenario {
 	public void SearchForContentCheck() throws Exception {
 		try {
 			incomingMail=gmail.submitIncomingMails();
-			incomingMail.search("gmail", "Content");
-			incomingMail.checkResult(5);
+			incomingMail.search("gmail", "Content", "1–7 of 7");
 			System.out.println("Email(s) were found");
-		//	TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
-		}catch(Exception e) {
-		//	TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("SearchForContentCheck", " 1–7 of 7 email(s) were found", TestLinkAPIResults.TEST_PASSED);
+		}catch(Exception e) {	
+			TestLinkIntegration.updateResults("SearchForContentCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			Assert.fail(e.getMessage());
 		}
 	}
 	

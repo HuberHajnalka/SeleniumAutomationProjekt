@@ -1,10 +1,14 @@
 package Base;
 
 import java.io.StringWriter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -13,19 +17,16 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 
 public class TestFunctions {
+
 	
-	public static String log(StringWriter writer, String textToAppend) {
-		writer.append("/n "+textToAppend);
-		return writer.toString();
-	}
+	static String searchOptionsPath="div[data-tooltip='Show search options']";
+	static String advancedOptionsInbox="//*[@type='text' and contains(@id,':6')]";
+	static String advancedOptionsSentMail="//*[@type='text' and contains(@id,':8')]";
 	
 	public static void validatePage(WebDriver driver, String pageName) throws Exception{
-		WebDriverWait wait = new WebDriverWait(driver, 180);
-		try {
+		WebDriverWait wait = new WebDriverWait(driver, 10);
 			wait.until(ExpectedConditions.titleContains(pageName));
-		}catch(Exception e){
-			System.out.println("Validation of the Page is failed");
-		}
+
 	}
 	
 	/**
@@ -38,15 +39,11 @@ public class TestFunctions {
 	 */
 	public static WebElement waitUntilElementPresentInDOM(WebDriver driver, By locator, int timeout, String attribute, String attributeValue) throws Exception {
 		WebDriverWait wait = new WebDriverWait(driver, timeout);
+	
 		WebElement element=null;
-		try {
 			wait.until(ExpectedConditions.attributeContains(locator, attribute, attributeValue));
 			element=driver.findElement(locator);
-
-		}catch(Exception e){
-			System.out.println("Element is not present");
-		}
-		return element;
+        return element;
 	}
 	
 
@@ -73,61 +70,87 @@ public class TestFunctions {
 	public static WebElement waitUntilElementIsClickable(WebDriver driver, By locator, int timeout) {
 		WebDriverWait wait = new WebDriverWait(driver, timeout);
 		WebElement element=null;
-		try {
-			wait.until(ExpectedConditions.elementToBeClickable(locator));
-			element=driver.findElement(locator);	
+		wait.until(ExpectedConditions.elementToBeClickable(locator));
+		element=driver.findElement(locator);	
 
-		}catch(Exception e){
-			System.out.println("Element is not present");
-		}
 		return element;
 	}
-	
 	/**
-	 * Scroll the element into view. This function is needed because the web element is clickable only in view. The parameter can be xpath or a web element.
 	 * 
 	 * @param driver
-	 * @param xPath
+	 * @param locator
+	 * @param text
 	 * @return
-	 * @throws InterruptedException
+	 * @throws InterruptedException 
 	 */
-	public static void scrollToElement(WebDriver driver, WebElement element) throws InterruptedException {
-		Thread.sleep(800);
-		String scroll = "";
-		String elementId = element.getAttribute("id");
-		if (elementId.isEmpty()) {
-			int x = element.getLocation().getX();
-			int y = element.getLocation().getY();
-			scroll = String.format("window.scroll(%s, %s)", x, y);
-		}
-		else {
-			scroll = "element = document.getElementById('" + elementId + "');element.scrollIntoView(true);";
-		}
-		ExecuteJs(driver, scroll);
-		WebDriverWait wait = new WebDriverWait(driver, 30);
-		wait.until(ExpectedConditions.elementToBeClickable(element));
-		Thread.sleep(800);
+	
+	public static boolean checkIfTextPresent(WebDriver driver, String text) throws InterruptedException {
+		String bodyText = driver.findElement(By.tagName("body")).getText();
+		return bodyText.contains(text);
 	}
 	
 	/**
-	 * This function is used when a Javascript is sent without a return statement.
+	 * Searching text in the given place (extendable options)
 	 * 
-	 * @param driver
-	 * @param JsQuery
+	 * @param text
+	 * @param where
+	 * @throws Exception
 	 */
-	public static void ExecuteJs(WebDriver driver, final String JsQuery) {
-		try {
-			Thread.sleep(100);
+	
+	public static void searchBase(WebDriver driver, String text, String where) throws Exception {
+		selectSearchOptions(driver);
+		System.out.println("Advanced search option was clicked");
+		List<WebElement> options=new ArrayList<>();
+		options=driver.findElements(By.xpath(advancedOptionsInbox));
+		//check needed regarding on page
+		if(options.size()==0) {
+			options=driver.findElements(By.xpath(advancedOptionsSentMail));
 		}
-		catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		((JavascriptExecutor) driver).executeScript(JsQuery);
-		((JavascriptExecutor) driver)
-				.executeScript("console.log('JS executed: " + JsQuery.replace("'", "\\\"") + "');");
-
+		switch (where) {
+		case "From":
+			typeTextToSearch(text, options.get(0));
+			break;
+		case "To":
+			typeTextToSearch(text, options.get(1));
+			break;
+		case "Subject":
+			typeTextToSearch(text, options.get(2));
+			break;
+		case "Content":
+			typeTextToSearch(text, options.get(3));
+			break;
+		case "NotInContent":
+			typeTextToSearch(text, options.get(4));
+			break;
+		default:
+			throw new Exception("search based "+where+" not possible");
+		}	
+		
 	}
 	
+	/**
+	 * Find and click to the advanced select option
+	 */
+	
+	private static void selectSearchOptions(WebDriver driver) {
+		WebElement searchOptionsButton=TestFunctions.waitUntilElementIsClickable(driver, By.cssSelector(searchOptionsPath), 5);
+		searchOptionsButton.click();
+	
+	}
+	
+	/**
+	 * function to type in the textField the text to search
+	 * @param text
+	 * @param textField
+	 */
+	private static void typeTextToSearch( String text, WebElement textField) {
+		textField.clear();
+		textField.sendKeys(text);
+		textField.sendKeys(Keys.ENTER);
+		System.out.println(text+ " was searched");
+	}
+
+
 	
 
 }

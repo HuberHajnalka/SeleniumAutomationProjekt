@@ -29,9 +29,9 @@ public class LoginScenario {
 			GmailPage gmail=gmailLogin.login("SeleniumTestAutomation2018", "Selenium2018");
 			gmail.checkPageIdLoaded();
 			System.out.println("ValidLogin Test was successfully finished");
-			//TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("ValidLogin", "ValidLogin Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-			//TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 		}
 	}
 	
@@ -40,9 +40,9 @@ public class LoginScenario {
 		try {
 			gmailLogin.invalidUserLogin("SeleniumTestAutomation2019");
 			System.out.println("Invalid User Login Test was successfully finished");
-			//TestLinkIntegration.updateResults("InvalidUserLogin", null, TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("InvalidUserLogin", "Invalid User Login Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-			//TestLinkIntegration.updateResults("InvalidUserLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("InvalidUserLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 		}
 	}
 	
@@ -51,9 +51,9 @@ public class LoginScenario {
 		try {
 			gmailLogin.invalidPasswordLogin("SeleniumTestAutomation2018", "Selenium2019");
 			System.out.println("Invalid Password Login Test was successfully finished");
-			//TestLinkIntegration.updateResults("InvalidPasswordLogin", null, TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("InvalidPasswordLogin", "Invalid Password Login Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-			//TestLinkIntegration.updateResults("InvalidPasswordLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("InvalidPasswordLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 		}
 	}
 	
