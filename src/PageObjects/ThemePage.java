@@ -19,14 +19,15 @@ public class ThemePage {
 		System.out.println("Themes page was loaded");
 	}
 	
-	public void setTheme(int index) throws Exception {
+	public SettingsPage setTheme(int index) throws Exception {
 		WebElement setTheme=TestFunctions.waitUntilElementIsClickable(driver, By.xpath(setThemButtonPath), 5);
 		setTheme.click();
 		WebElement image=TestFunctions.waitUntilElementIsClickable(driver, By.cssSelector("div[id*='y.custom-"+index+"']"), 5);
 		image.click();
 		WebElement saveButton=TestFunctions.waitUntilElementIsClickable(driver, By.xpath(saveButtonPath), 5);
-		saveButton.click();//after save the Gmail page is loaded
-		TestFunctions.validatePage(driver, "Gmail");
+		saveButton.click();
+		return new SettingsPage(driver);
 	}
+
 	
 }

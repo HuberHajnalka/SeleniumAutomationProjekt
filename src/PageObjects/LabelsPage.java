@@ -51,7 +51,7 @@ public class LabelsPage {
 	}
 	
 	private boolean checkPopUpMessage(String text) throws Exception {
-		Thread.sleep(500);
+		Thread.sleep(1000);
 		return TestFunctions.checkIfTextPresent(driver, text);
 	}
 

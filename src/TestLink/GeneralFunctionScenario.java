@@ -64,12 +64,39 @@ public class GeneralFunctionScenario {
 	}
 	
 	@Test
-	public void ChangeBackground() throws Exception {
+	public void ChangeBackgroundTest() throws Exception {
 		try {
 			SettingsPage settings=gmail.submitSettings();
 			ThemePage themesPage=settings.goToThemes();
-			themesPage.setTheme(2); //it is always a new one
-			System.out.println("Setting of a theme test was successfully finished");
+			settings=themesPage.setTheme(2); //it is always a new one
+			System.out.println("Setting of a new theme test was successfully finished");			
+			//	TestLinkIntegration.updateResults("IncomingMailPageIconsCheck", "IncominMailPageIconcheck Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
+		}catch(Exception e) {
+		//	TestLinkIntegration.updateResults("IncomingMailPageIconsCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			Assert.fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void MoveMailTest() throws Exception {
+		try {
+			IncomingMailsPage incomingMails=gmail.submitIncomingMails();
+			incomingMails.moveMailTo(2, "Spam");
+			incomingMails.deleteMail(2);
+			System.out.println("Moving a mail test was successfully finished");	
+			//	TestLinkIntegration.updateResults("IncomingMailPageIconsCheck", "IncominMailPageIconcheck Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
+		}catch(Exception e) {
+		//	TestLinkIntegration.updateResults("IncomingMailPageIconsCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			Assert.fail(e.getMessage());
+		}
+	}
+	
+	@Test
+	public void DeleteMailTest() throws Exception {
+		try {
+			IncomingMailsPage incomingMails=gmail.submitIncomingMails();
+			incomingMails.deleteMail(2);
+			System.out.println("Delete a mail test was successfully finished");	
 			//	TestLinkIntegration.updateResults("IncomingMailPageIconsCheck", "IncominMailPageIconcheck Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
 		//	TestLinkIntegration.updateResults("IncomingMailPageIconsCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
