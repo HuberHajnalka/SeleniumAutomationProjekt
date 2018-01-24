@@ -1,12 +1,12 @@
-package TestLink;
+package testlink;
 
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import PageObjects.GmailLoginPage;
-import PageObjects.GmailPage;
-import PageObjects.OutGoingMailsPage;
+import pageobjects.GmailLoginPage;
+import pageobjects.GmailPage;
+import pageobjects.OutGoingMailsPage;
 
 public class OutGoingMailScenario {
 	

@@ -1,4 +1,4 @@
-package TestLink;
+package testlink;
 
 
 import java.io.Console;
@@ -8,10 +8,10 @@ import org.junit.Before;
 import org.junit.Assert;
 import org.junit.Test;
 
-import Base.GmailBase;
-import Base.TestFunctions;
-import PageObjects.GmailLoginPage;
-import PageObjects.GmailPage;
+import base.GmailBase;
+import base.TestFunctions;
+import pageobjects.GmailLoginPage;
+import pageobjects.GmailPage;
 import testlink.api.java.client.TestLinkAPIResults;
 
 
@@ -27,7 +27,7 @@ public class LoginScenario {
 	public void validLogin() throws Exception {
 		try {
 			GmailPage gmail=gmailLogin.login("SeleniumTestAutomation2018", "Selenium2018");
-			gmail.checkPageIdLoaded();
+			gmail.checkPageIsLoaded();
 			System.out.println("ValidLogin Test was successfully finished");
 			TestLinkIntegration.updateResults("ValidLogin", "ValidLogin Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {

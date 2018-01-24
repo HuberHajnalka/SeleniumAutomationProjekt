@@ -1,4 +1,4 @@
-package PageObjects;
+package pageobjects;
 
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -6,15 +6,15 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
-import Base.GmailBase;
-import Base.TestFunctions;
+import base.GmailBase;
+import base.TestFunctions;
 
 public class OutGoingMailsPage{
 	WebDriver driver;
 	String searchOptionsPath="div[data-tooltip='Show search options']";
 	
 	/**
-	*constuctor with page validation
+	 *  Constructor with page validation
 	 * @param driver
 	 * @throws Exception
 	 */
@@ -24,7 +24,7 @@ public class OutGoingMailsPage{
 	}
 	
 	/**
-	 * function to check the not expected page text elements
+	 * Function to check the not expected page text elements
 	 * @param textToCheck
 	 * @throws Exception
 	 */
@@ -39,6 +39,13 @@ public class OutGoingMailsPage{
 		}
 	}
 	
+	/**
+	 * Search a text somewhere with the expected result
+	 * @param text
+	 * @param where
+	 * @param result
+	 * @throws Exception
+	 */
 	public void search(String text, String where, String result) throws Exception {
 		TestFunctions.searchBase(this.driver, text, where);
 		TestFunctions.validatePage(driver, "Search results");

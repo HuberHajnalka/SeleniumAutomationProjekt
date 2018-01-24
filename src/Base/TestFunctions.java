@@ -1,13 +1,11 @@
-package Base;
+package base;
 
-import java.io.StringWriter;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
-import org.junit.Assert;
+
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -18,7 +16,9 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class TestFunctions {
 
-	
+	/**
+	 * Search paths since they are available everywhere, so common using is possible
+	 */
 	static String searchOptionsPath="div[data-tooltip='Show search options']";
 	static String advancedOptionsInbox="//*[@type='text' and contains(@id,':6')]";
 	static String advancedOptionsSentMail="//*[@type='text' and contains(@id,':8')]";
@@ -30,7 +30,7 @@ public class TestFunctions {
 	}
 	
 	/**
-	 * This function waits for a web element to be present in the DOM. . Throw an exception if the web element is not found.
+	 * This function waits for a web element to be present in the DOM.Throw an exception if the web element is not found.
 	 * 
 	 * @param waitElement
 	 * @param elementBylocator
@@ -49,10 +49,9 @@ public class TestFunctions {
 
 	
 	/**
-	 * This function waits if text is not presented but elemnt is availble
+	 * This function waits if text is presented on the screen
 	 * 
 	 * @param element
-
 	 */
 	
 	public static void waitUntilTextPresent(WebElement element) throws InterruptedException {
@@ -76,7 +75,7 @@ public class TestFunctions {
 		return element;
 	}
 	/**
-	 * 
+	 * This function waits for the body tag is loaded, then check the text existence
 	 * @param driver
 	 * @param locator
 	 * @param text
@@ -90,7 +89,7 @@ public class TestFunctions {
 	}
 	
 	/**
-	 * Searching text in the given place (extendable options)
+	 * Searching text in the given place (extendible options)
 	 * 
 	 * @param text
 	 * @param where

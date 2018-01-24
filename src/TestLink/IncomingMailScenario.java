@@ -1,4 +1,4 @@
-package TestLink;
+package testlink;
 
 import org.junit.After;
 import org.junit.Assert;
@@ -6,9 +6,9 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.Keys;
 
-import PageObjects.GmailLoginPage;
-import PageObjects.GmailPage;
-import PageObjects.IncomingMailsPage;
+import pageobjects.GmailLoginPage;
+import pageobjects.GmailPage;
+import pageobjects.IncomingMailsPage;
 import testlink.api.java.client.TestLinkAPIResults;
 
 public class IncomingMailScenario {

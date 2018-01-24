@@ -1,12 +1,10 @@
-package TestLink;
-import org.apache.xmlrpc.client.XmlRpcClient;
-import org.apache.xmlrpc.client.XmlRpcClientConfigImpl;
+package testlink;
+
 
 import testlink.api.java.client.TestLinkAPIClient;
-import testlink.api.java.client.TestLinkAPIConst;
+
 import testlink.api.java.client.TestLinkAPIException;
-import testlink.api.java.client.TestLinkAPIHelper;
-import testlink.api.java.client.TestLinkAPIResults;
+
 
 
 public class TestLinkIntegration {

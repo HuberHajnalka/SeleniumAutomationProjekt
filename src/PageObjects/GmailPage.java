@@ -1,4 +1,4 @@
-package PageObjects;
+package pageobjects;
 
 import java.awt.AWTException;
 import java.awt.Robot;
@@ -12,7 +12,7 @@ import org.openqa.selenium.interactions.internal.Coordinates;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.HasInputDevices;
 
-import Base.TestFunctions;
+import base.TestFunctions;
 
 
 public class GmailPage {
@@ -26,7 +26,11 @@ public class GmailPage {
 	String optionSettingsPath="div[id=\"ms\"]>div";
 
 	
-	
+	/**
+	 * Constuctor with page vaildation based on title
+	 * @param driver
+	 * @throws Exception
+	 */
 	
 	public GmailPage(WebDriver driver) throws Exception {
 		this.driver = driver;
@@ -34,11 +38,20 @@ public class GmailPage {
 		System.out.println("Login was successfully finished\n");
 	}
 	
-	public void checkPageIdLoaded() throws Exception {
+	/**
+	 * Check a specific icon to see if the page is loaded
+	 * @throws Exception
+	 */
+	public void checkPageIsLoaded() throws Exception {
 		WebElement writeMailField =TestFunctions.waitUntilElementPresentInDOM(driver, By.cssSelector(writeMailFieldPath), 5, "role", "button");
 		Assert.assertTrue("Page load check", writeMailField.isEnabled());
 	}
 	
+	/**
+	 * Load incoming mails page (Inbox)
+	 * @return
+	 * @throws Exception
+	 */
 	public IncomingMailsPage submitIncomingMails() throws Exception {
 		WebElement incomingMailButton=TestFunctions.waitUntilElementIsClickable(driver, By.cssSelector(incominMailButtonPath), 5);
 		incomingMailButton.click();	
@@ -46,11 +59,22 @@ public class GmailPage {
 		
 	}
 	
+	/**
+	 * load ootgoing mail page (Sent Mail)
+	 * @return
+	 * @throws Exception
+	 */
 	public OutGoingMailsPage submitoutGoingMails() throws Exception {
 		WebElement outgoingMailButton=TestFunctions.waitUntilElementIsClickable(driver, By.cssSelector(outGoingMailButtonPath), 5);
 		outgoingMailButton.click();	
 		return new OutGoingMailsPage(driver);
 	}
+	
+	/**
+	 * Function test the existence of the icons, which should be shown on the page
+	 * @param iconNames - list of the expected names of the icons
+	 * @throws Exception
+	 */
 	
 	public void checkIcons(String[] iconNames) throws Exception{
 		for(String iconName:iconNames) {
@@ -60,10 +84,21 @@ public class GmailPage {
 		}
 	}
 	
+	/**
+	 * Click on more to see the hidden folders and labels
+	 * @throws Exception
+	 */
 	public void getMoreOptions() throws Exception{
 		WebElement moreOptionsButton=TestFunctions.waitUntilElementIsClickable(driver, By.cssSelector(moreOptionsPath), 5);
 		moreOptionsButton.click();	
 	}
+	
+	/**
+	 * Function to simulate the mouse movement to see hidden parts of the page
+	 * The function is extensible
+	 * @param text
+	 * @throws Exception
+	 */
 	
 	public void moveMouseTo(String text) throws Exception {
 		 Actions action = new Actions(driver);
@@ -80,6 +115,11 @@ public class GmailPage {
 
 	}
 	
+	/**
+	 * load settings page
+	 * @return
+	 * @throws Exception
+	 */
 	public SettingsPage submitSettings() throws Exception {
 		WebElement settings=TestFunctions.waitUntilElementIsClickable(driver, By.xpath(settingsPath), 5);
 		settings.click();
