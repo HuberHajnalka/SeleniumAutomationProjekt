@@ -39,9 +39,9 @@ public class GeneralFunctionScenario {
 			String[] moreIcons= {"Important", "Chats", "All Mail", "Spam", "Trash"};
 			gmail.checkIcons(moreIcons);
 			System.out.println("GmailPageIconcheck Test was successfully finished");	
-			//	TestLinkIntegration.updateResults("GeneralGmailPageIconsCheck", "GmailPageIconcheck Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
+				TestLinkIntegration.updateResults("GeneralGmailPageIconsCheck", "GmailPageIconcheck Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-		    //	TestLinkIntegration.updateResults("GeneralGmailPageIconsCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+		    	TestLinkIntegration.updateResults("GeneralGmailPageIconsCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 			Assert.fail(e.getMessage());
 		}
 	}
@@ -56,9 +56,9 @@ public class GeneralFunctionScenario {
 			labelsPage.deleteLabel("test2018");
 			System.out.println("test2018 label was successfully deleted \n"
 					+ " Setting of labels test was successfully finished");
-			//	TestLinkIntegration.updateResults("CreateLabelTest", "Setting of labels test was successfully finished", TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("CreateLabelTest", "Setting of labels test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-		//	TestLinkIntegration.updateResults("CreateLabelTest", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("CreateLabelTest", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 			Assert.fail(e.getMessage());
 		}
 	}
@@ -70,9 +70,9 @@ public class GeneralFunctionScenario {
 			ThemePage themesPage=settings.goToThemes();
 			settings=themesPage.setTheme(2); //it is always a new one
 			System.out.println("Setting of a new theme test was successfully finished");			
-			//	TestLinkIntegration.updateResults("ChangeBackgroundTest", "Setting of a new theme test was successfully finished", TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("ChangeBackgroundTest", "Setting of a new theme test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-			//	TestLinkIntegration.updateResults("IChangeBackgroundTest", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("IChangeBackgroundTest", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 			Assert.fail(e.getMessage());
 		}
 	}
@@ -84,9 +84,9 @@ public class GeneralFunctionScenario {
 			incomingMails.moveMailTo(2, "Spam");
 			incomingMails.deleteMail(2);
 			System.out.println("Moving a mail test was successfully finished");	
-			//	TestLinkIntegration.updateResults("MoveMailTest", "Moving a mail test was successfully finished", TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("MoveMailTest", "Moving a mail test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-		//	TestLinkIntegration.updateResults("MoveMailTest", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("MoveMailTest", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 			Assert.fail(e.getMessage());
 		}
 	}
@@ -97,9 +97,9 @@ public class GeneralFunctionScenario {
 			IncomingMailsPage incomingMails=gmail.submitIncomingMails();
 			incomingMails.deleteMail(2);
 			System.out.println("Delete a mail test was successfully finished");	
-			//	TestLinkIntegration.updateResults("DeleteMailTest", "Delete a mail test was successfully finished", TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("DeleteMailTest", "Delete a mail test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-		//	TestLinkIntegration.updateResults("DeleteMailTest", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("DeleteMailTest", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 			Assert.fail(e.getMessage());
 		}
 	}
