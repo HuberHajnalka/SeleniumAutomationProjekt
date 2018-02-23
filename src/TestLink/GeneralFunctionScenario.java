@@ -72,7 +72,7 @@ public class GeneralFunctionScenario {
 			System.out.println("Setting of a new theme test was successfully finished");			
 			TestLinkIntegration.updateResults("ChangeBackgroundTest", "Setting of a new theme test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-			TestLinkIntegration.updateResults("IChangeBackgroundTest", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("ChangeBackgroundTest", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 			Assert.fail(e.getMessage());
 		}
 	}

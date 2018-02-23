@@ -19,7 +19,7 @@ public class GmailBase {
 	 * @throws MalformedURLException
 	 */
 	public  GmailBase() throws MalformedURLException{
-		System.setProperty("webdriver.chrome.driver", "drivers/chromedrivers/2_31/chromedriver.exe"); //chromedriver 2_33 didn't cause problem at maximize
+		System.setProperty("webdriver.chrome.driver", "drivers/chromedrivers/2_33/chromedriver.exe"); //chromedriver 2_33 didn't cause problem at maximize
 		ChromeOptions options = new ChromeOptions();
 		options.addArguments("en-US");
 		driver = new ChromeDriver(options);

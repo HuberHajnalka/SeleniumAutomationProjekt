@@ -27,9 +27,9 @@ public class OutGoingMailScenario {
 		try {
 			outGoingMail=gmail.submitoutGoingMails();
 			System.out.println("OutGoingMailPageVerification Test was successfully finished");
-			TestLinkIntegration.updateResults("ValidLogin", "OutGoingMailPageVerification Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("OutGoingMailPageVerification", "OutGoingMailPageVerification Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-			TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("OutGoingMailPageVerification", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 		}
 	}
 	
@@ -53,9 +53,9 @@ public class OutGoingMailScenario {
 			outGoingMail=gmail.submitoutGoingMails();
 			outGoingMail.search("me", "From", "1–3 of 3");
 			System.out.println("Email(s) were found");
-			TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("SearchForSenderCheck", "SearchForSenderCheck Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-			TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("SearchForSenderCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 		}
 	}
 	
@@ -65,9 +65,9 @@ public class OutGoingMailScenario {
 			outGoingMail=gmail.submitoutGoingMails();
 			outGoingMail.search("test2", "NotInContent", "1–2 of 2");
 			System.out.println("Email(s) were found");
-			TestLinkIntegration.updateResults("ValidLogin", null, TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("SearchForNotInContentCheck","SearchForNotInContentCheck Test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
-			TestLinkIntegration.updateResults("ValidLogin", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
+			TestLinkIntegration.updateResults("SearchForNotInContentCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 		}
 	}
 	
