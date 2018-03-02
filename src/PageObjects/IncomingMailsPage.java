@@ -120,7 +120,7 @@ public class IncomingMailsPage{
 		case "Spam":
 			WebElement folder=TestFunctions.waitUntilElementIsClickable(driver, By.xpath("//div[text()='"+where+"']"), 5);
 			folder.click();
-			TestFunctions.checkIfTextPresent(driver, "Conversion has been marked as spam");
+			TestFunctions.checkIfTextPresent(driver, "The conversation has been marked as spam.");
 			break;
 		default:
 			throw new Exception("The folder: "+where+" doesn't exist");

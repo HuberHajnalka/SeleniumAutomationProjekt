@@ -82,7 +82,6 @@ public class GeneralFunctionScenario {
 		try {
 			IncomingMailsPage incomingMails=gmail.submitIncomingMails();
 			incomingMails.moveMailTo(2, "Spam");
-			incomingMails.deleteMail(2);
 			System.out.println("Moving a mail test was successfully finished");	
 			TestLinkIntegration.updateResults("MoveMailTest", "Moving a mail test was successfully finished", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {
