@@ -32,7 +32,7 @@ public class ThemePage {
 	public SettingsPage setTheme(int index) throws Exception {
 		WebElement setTheme=TestFunctions.waitUntilElementIsClickable(driver, By.xpath(setThemButtonPath), 5);
 		setTheme.click();
-		WebElement image=TestFunctions.waitUntilElementIsClickable(driver, By.cssSelector("div[id*='y.custom-"+index+"']"), 5);
+		WebElement image=TestFunctions.waitUntilElementIsClickable(driver, By.cssSelector("div[bgid*='custom-"+index+"']"), 5);
 		image.click();
 		WebElement saveButton=TestFunctions.waitUntilElementIsClickable(driver, By.xpath(saveButtonPath), 5);
 		saveButton.click();
