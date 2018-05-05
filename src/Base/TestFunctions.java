@@ -21,7 +21,7 @@ public class TestFunctions {
 	 */
 	static String searchOptionsPath="div[data-tooltip='Show search options']";
 	static String advancedOptionsInbox="//*[@type='text' and contains(@id,':6')]";
-	static String advancedOptionsSentMail="//*[@type='text' and contains(@id,':8')]";
+	static String advancedOptionsSentMail="//*[@type='text' and contains(@id,':')]";
 	
 	public static void validatePage(WebDriver driver, String pageName) throws Exception{
 		WebDriverWait wait = new WebDriverWait(driver, 10);
@@ -107,19 +107,19 @@ public class TestFunctions {
 		}
 		switch (where) {
 		case "From":
-			typeTextToSearch(text, options.get(0));
-			break;
-		case "To":
 			typeTextToSearch(text, options.get(1));
 			break;
-		case "Subject":
+		case "To":
 			typeTextToSearch(text, options.get(2));
 			break;
-		case "Content":
+		case "Subject":
 			typeTextToSearch(text, options.get(3));
 			break;
-		case "NotInContent":
+		case "Content":
 			typeTextToSearch(text, options.get(4));
+			break;
+		case "NotInContent":
+			typeTextToSearch(text, options.get(5));
 			break;
 		default:
 			throw new Exception("search based "+where+" not possible");
