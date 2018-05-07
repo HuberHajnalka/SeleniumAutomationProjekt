@@ -70,7 +70,7 @@ public class IncomingMailScenario {
 			incomingMail=gmail.submitIncomingMails();
 			incomingMail.search("gmail", "Content", "1–9 of 9");
 			System.out.println("Email(s) were found");
-			TestLinkIntegration.updateResults("SearchForContentCheck", " 1–8 of 8 email(s) were found", TestLinkAPIResults.TEST_PASSED);
+			TestLinkIntegration.updateResults("SearchForContentCheck", " 1–9 of 9 email(s) were found", TestLinkAPIResults.TEST_PASSED);
 		}catch(Exception e) {	
 			TestLinkIntegration.updateResults("SearchForContentCheck", e.getMessage(), TestLinkAPIResults.TEST_FAILED);
 			Assert.fail(e.getMessage());
