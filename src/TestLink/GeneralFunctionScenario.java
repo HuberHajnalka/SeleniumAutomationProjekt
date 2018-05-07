@@ -35,7 +35,7 @@ public class GeneralFunctionScenario {
 			String[] icons= {"Starred", "Sent Mail", "Inbox", "Drafts"};
 			gmail.checkIcons(icons);
 			gmail.getMoreOptions();
-			gmail.moveMouseTo("More"); //it works only on the primary screen
+			gmail.moveMouseTo("Important"); //it works only on the primary screen
 			String[] moreIcons= {"Important", "Chats", "All Mail", "Spam", "Trash"};
 			gmail.checkIcons(moreIcons);
 			System.out.println("GmailPageIconcheck Test was successfully finished");	

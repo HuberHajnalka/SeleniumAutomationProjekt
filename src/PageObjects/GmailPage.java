@@ -21,7 +21,8 @@ public class GmailPage {
 	String writeMailFieldPath="div[class='T-I J-J5-Ji T-I-KE L3']";
 	String incominMailButtonPath="a[title*='Inbox']";
 	String outGoingMailButtonPath="a[title='Sent Mail']";
-	String moreOptionsPath="#\\3a 4g > span.CJ";
+	String moreOptionsPath="span[class='CJ']";
+	String importantPath="a[title*='Important']";
 	String settingsPath="//*[@class='Cr aqJ']/div[3]/div[1]/div/div";
 	String optionSettingsPath="div[id=\"ms\"]>div";
 
@@ -106,6 +107,10 @@ public class GmailPage {
 			switch(text) {
 			case "More":
 				  action.moveToElement(driver.findElement(By.cssSelector(moreOptionsPath)));
+				  action.perform();
+				  break;
+			case "Important": 
+				  action.moveToElement(driver.findElement(By.cssSelector(importantPath)));
 				  action.perform();
 				  break;
 			default: 
