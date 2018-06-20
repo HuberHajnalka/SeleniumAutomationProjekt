@@ -17,7 +17,7 @@ public class GmailLoginPage extends GmailBase{
 	String passwordFieldPath = "input[type='password']";
 	String userFieldPath="div[id=':5.mn']";
 	String passwordErrorPath="//*[@id='password']/div[2]/div[2]";
-	String userErrorPath="//*[@id='view_container']/div/div[2]/div/form/div[1]/div/div[2]/div[2]";
+	String userErrorPath="//*[@id='view_container']/div/div/div[2]/div/content/form/div[1]/div/div[2]/div[2]";
 
 	/**
 	 * Constuctor and validation of the page based on title
